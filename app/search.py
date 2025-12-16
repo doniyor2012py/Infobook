@@ -7,6 +7,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 BOOKS_FILE = "books_data.json"
 url = "https://www.googleapis.com/books/v1/volumes"
 
+def total_books(query):
+    ...
 def get_cover_base64(url):
     """
     Load covers by base 64
