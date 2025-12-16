@@ -9,6 +9,7 @@ url = "https://www.googleapis.com/books/v1/volumes"
 
 def total_books(query):
     url_scr=url+f"?q={query}"
+    responce=None
 
 def get_cover_base64(url):
     """
