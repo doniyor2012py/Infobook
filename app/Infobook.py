@@ -1,7 +1,7 @@
 import flet as ft
 from multitool import shorter, to_next_line,sort
 import json
-from search import parse_books, preload_covers
+from search import parse_books, preload_covers, total_books
 import os
 import pathlib
 from bot import support_message
