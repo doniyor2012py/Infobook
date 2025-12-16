@@ -5,6 +5,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 BOOKS_FILE = "books_data.json"
+url = "https://www.googleapis.com/books/v1/volumes"
 
 def get_cover_base64(url):
     """
@@ -25,8 +26,7 @@ def get_cover_base64(url):
 def parse_books(query=None, max_results=20):
     """Google Books API parse books with url"""
     print(f"🔍 Searching books for '{query or 'all books'}'...")
-
-    url = "https://www.googleapis.com/books/v1/volumes"
+
     params = {
         "q": query or "books",
         "maxResults": max_results,
