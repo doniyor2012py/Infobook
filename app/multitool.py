@@ -50,3 +50,14 @@ def shorter(x: list, limit: int = 30) -> str:
         result.append(word)
         letter_count += len(word)
     return " ".join(result)
+
+def load_books():
+    """Загружает JSON файл. Сейчас это - books_data.json для главной странице"""
+    try:
+        BASE_DIR = pathlib.Path(__file__).parent
+        file_path = BASE_DIR / "books_data.json"
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        print(e)
+        return []

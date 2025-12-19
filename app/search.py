@@ -2,6 +2,7 @@ import json
 import requests
 import base64
 import sys
+from multitool import load_books
 
 sys.stdout.reconfigure(encoding='utf-8')
 BOOKS_FILE = "books_data.json"
@@ -31,7 +32,8 @@ def get_cover_base64(url):
 def parse_books(query=None, max_results=20):
     """Google Books API parse books with url"""
     print(f"🔍 Searching books for '{query or 'all books'}'...")
-
+
+
     params = {
         "q": query or "books",
         "maxResults": max_results,
@@ -111,14 +113,6 @@ def clean_books():
     except Exception as e:
         print("Error in clean_books:", e)
 
-
-def load_books():
-    """Load books from books_data.json"""
-    try:
-        with open(BOOKS_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except:
-        return []
 
 
 def preload_covers(books = load_books()):
