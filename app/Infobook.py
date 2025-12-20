@@ -4,7 +4,6 @@ from Book_widget import BookWidget
 import json
 from search import parse_books, preload_covers, total_books
 import os
-import pathlib
 from bot import support_message
 from analyse import piechart
 
