@@ -11,7 +11,7 @@ url = "https://www.googleapis.com/books/v1/volumes"
 def total_books(query):
     """Get total books by query from Google Books API"""
     params={"q":query}
-    responce= requests.get(url, params=params)
+    responce= requests.get(url, params=params).json()
     return responce.get("totalItems",0)
 
 def get_cover_base64(url):
