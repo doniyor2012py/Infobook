@@ -47,7 +47,7 @@ def piechart():
                 badge=badge(ft.Icons.AC_UNIT, normal_badge_size),
                 badge_position=0.98,
             ),
-            ft.PieChartSection(
+            ft.PieChartSection((
                 total_books("subject:romance"),
                 title="Romance",
                 title_style=normal_title_style,
