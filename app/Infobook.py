@@ -6,6 +6,7 @@ from search import parse_books, preload_covers, total_books
 import os
 import pathlib
 from bot import support_message
+from analyse import piechart
 
 
 print("📂 Files in current dir:", os.listdir())
@@ -83,7 +84,10 @@ def Main(page: ft.Page):
 
     def analyse(e):
         """ TODO: Anylyse Logic """
-        page.open(ft.SnackBar(ft.Text("THERE IS NO LOGIC NOW YOU ,PLEASE WAIT")))
+        main_page.clear()
+        main_page.controls.append(piechart())
+        page.update()
+
 
     def on_logo_click(e):
         """Go to main page on logo click"""
