@@ -83,7 +83,7 @@ def Main(page: ft.Page):
 
     def analyse(e):
         """ TODO: Anylyse Logic """
-        main_page.clear()
+        main_page.clean()
         main_page.controls.append(piechart())
         page.update()
 
