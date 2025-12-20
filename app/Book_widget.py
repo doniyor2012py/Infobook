@@ -1,5 +1,5 @@
 import flet as ft
-
+from multitool import shorter, to_next_line
 
 class BookWidget:
     """===================Класс который включает в себя=============================
