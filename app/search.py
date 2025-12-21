@@ -117,8 +117,11 @@ def clean_books():
 
 
 
-def preload_covers(books = load_books()):
+def preload_covers(books =None):
     """Loads books cover"""
+    if books is None:
+        books = load_books()
+        
     for book in books:
         if book["cover"] != "NotFound.jpg":
             book["cover_b64"] = get_cover_base64(book["cover"])
