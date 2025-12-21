@@ -2,11 +2,13 @@ import flet as ft
 from search import total_books
 
 def piechart():
+    """Creates a pie chart of book genres"""
+    genres = ["fantastic", "romance", "science", "horror", "sport"]
+    results = {g: total_books(f"subject:{g}") for g in genres}
+
     normal_radius = 100
     hover_radius = 110
-    normal_title_style = ft.TextStyle(
-        size=12, color=ft.Colors.WHITE, weight=ft.FontWeight.BOLD
-    )
+    normal_title_style = ft.TextStyle(size=12, color=ft.Colors.WHITE, weight=ft.FontWeight.BOLD)
     hover_title_style = ft.TextStyle(
         size=16,
         color=ft.Colors.WHITE,
@@ -36,54 +38,31 @@ def piechart():
                 section.title_style = normal_title_style
         chart.update()
 
+    icons = [
+        ft.Icons.PRECISION_MANUFACTURING_ROUNDED,
+        ft.Icons.FAVORITE,
+        ft.Icons.SCIENCE,
+        ft.Icons.TAG_FACES_ROUNDED,
+        ft.Icons.SPORTS_FOOTBALL,
+    ]
+    colors = [ft.Colors.BLUE, ft.Colors.RED, ft.Colors.YELLOW, ft.Colors.PURPLE, ft.Colors.GREEN]
+
+    sections = []
+    for (genre, count), icon, color in zip(results.items(), icons, colors):
+        sections.append(
+            ft.PieChartSection(
+                value=count,
+                title=f"{genre.capitalize()} {count}",
+                title_style=normal_title_style,
+                color=color,
+                radius=normal_radius,
+                badge=badge(icon, normal_badge_size),
+                badge_position=0.98,
+            )
+        )
+
     chart = ft.PieChart(
-        sections=[
-            ft.PieChartSection(
-                total_books("subject:fantastic"),
-                title=f"Fantastic  {total_books('subject:fantastic')}",
-                title_style=normal_title_style,
-                color=ft.Colors.BLUE,
-                radius=normal_radius,
-                badge=badge(ft.Icons.PRECISION_MANUFACTURING_ROUNDED, normal_badge_size),
-                badge_position=0.98,
-            ),
-            ft.PieChartSection(
-                total_books("subject:romance"),
-                title=f"Romance  {total_books('subject:romance')}",
-                title_style=normal_title_style,
-                color=ft.Colors.RED,
-                radius=normal_radius,
-                badge=badge(ft.Icons.FAVORITE, normal_badge_size),
-                badge_position=0.98,
-            ),
-            ft.PieChartSection(
-                total_books("subject:science"),
-                title=f"Science  {total_books('subject:science')}",
-                title_style=normal_title_style,
-                color=ft.Colors.YELLOW,
-                radius=normal_radius,
-                badge=badge(ft.Icons.SCIENCE, normal_badge_size),
-                badge_position=0.98,
-            ),
-            ft.PieChartSection(
-                total_books("subject:horror"),
-                title=f"Horror  {total_books('subject:horror')}",
-                title_style=normal_title_style,
-                color=ft.Colors.PURPLE,
-                radius=normal_radius,
-                badge=badge(ft.Icons.TAG_FACES_ROUNDED, normal_badge_size),
-                badge_position=0.98,
-            ),
-            ft.PieChartSection(
-                total_books("subject:sport"),
-                title=f"Sport  {total_books('subject:sport')}",
-                title_style=normal_title_style,
-                color=ft.Colors.GREEN,
-                radius=normal_radius,
-                badge=badge(ft.Icons.SPORTS_FOOTBALL, normal_badge_size),
-                badge_position=0.98,
-            ),
-        ],
+        sections=sections,
         sections_space=0,
         center_space_radius=0,
         on_chart_event=on_chart_event,
