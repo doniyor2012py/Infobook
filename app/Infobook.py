@@ -70,11 +70,14 @@ def Main(page: ft.Page):
 
 
 
-    def show_books(books=load_books()):
+    def show_books(books=None):
         """
         - Clears main page contents
         - Calls BookWidget class to generate new books
         """
+
+        if books is None:
+            books = load_books()
 
         widgets = BookWidget(page, books, main_page, search_results)
         main_page.controls.clear()
@@ -131,7 +134,7 @@ def Main(page: ft.Page):
             page.open(ft.SnackBar(ft.Text("Login Successful!")))
             page.close(login_dlg)
             buttons_row.controls.insert(
-                0, ft.ElevatedButton("Parse Books", color=ft.Colors.BLUE, on_click=analyse)
+                0, ft.ElevatedButton("Books Analyse", color=ft.Colors.BLUE, on_click=analyse)
             )
         else:
             page.open(ft.SnackBar(ft.Text("Successful Login!")))

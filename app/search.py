@@ -30,7 +30,7 @@ def get_cover_base64(url):
         return None
 
 
-def parse_books(query=None, max_results=20):
+def parse_books(query=None, max_results=20, page=1):
     """Google Books API parse books with url"""
     print(f"🔍 Searching books for '{query or 'all books'}'...")
 
@@ -40,6 +40,7 @@ def parse_books(query=None, max_results=20):
         "maxResults": max_results,
         "printType": "books",
         "filter": "ebooks",
+        "startIndex": (page - 1) * max_results,
     }
 
     try:
