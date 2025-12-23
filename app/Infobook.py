@@ -78,9 +78,9 @@ def Main(page: ft.Page):
 
         if books is None:
 
-            main_books = load_books()
+            books = load_books()
 
-        widgets = BookWidget(page, main_books, main_page, search_results)
+        widgets = BookWidget(page, books, main_page, search_results)
         main_page.controls.clear()
         main_page.controls.extend(widgets.container())
         page.update()
