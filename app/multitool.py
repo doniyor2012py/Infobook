@@ -1,3 +1,6 @@
+import json
+import pathlib
+
 def search(books_list: list, query: str) -> list:
     """
     Do searching by title or author in list
