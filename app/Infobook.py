@@ -226,4 +226,4 @@ def Main(page: ft.Page):
     )
     
 
-ft.app(target=Main, view=None)
+ft.run(target=Main, view=None)
