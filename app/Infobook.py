@@ -6,7 +6,6 @@ from search import parse_books, preload_covers, total_books
 import os
 from bot import support_message
 from analyse import piechart
-from flet import IFrame
 
 print("📂 Files in current dir:", os.listdir())
 print("📂 Full path:", os.path.abspath(__file__))
@@ -16,8 +15,23 @@ print("📂 Full path:", os.path.abspath(__file__))
 
 
 def Main(page: ft.Page):
-    analytics = IFrame(src="https://infobook.onrender.com/static/plausible.html", width=0, height=0)
-    page.add(analytics)
+    analytics = "<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <!-- Privacy-friendly analytics by Plausible -->
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Q_jj32-309OTnnqJrvPZ9.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+
+</head>
+<body></body>
+</html>
+"
     page.title = "InfoBook"
     page.scroll = ft.ScrollMode.ALWAYS
     page.theme_mode = "light"
@@ -179,6 +193,7 @@ def Main(page: ft.Page):
         width=150
 )
     #________________Adding all in main page__________________________
+    page.add(analytics)
     page.add(
         ft.Column(
             [
