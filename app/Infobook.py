@@ -15,24 +15,12 @@ print("📂 Full path:", os.path.abspath(__file__))
 
 
 def Main(page: ft.Page):
-    analytics = "
-    <!DOCTYPE html>
-<html lang='ru'>
-<head>
-  <meta charset='UTF-8'>
-  <!-- Privacy-friendly analytics by Plausible -->
-<!-- Privacy-friendly analytics by Plausible -->
-<script async src='https://plausible.io/js/pa-Q_jj32-309OTnnqJrvPZ9.js'></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
-
-
-</head>
-<body></body>
-</html>
-"
+    analytics = ft.WebView(
+        src="https://plausible.io/js/pa-Q_jj32-309OTnnqJrvPZ9.js",
+        width=0,
+        height=0,  # невидимо, просто для аналитики
+        expand=False
+    )
     page.title = "InfoBook"
     page.scroll = ft.ScrollMode.ALWAYS
     page.theme_mode = "light"
