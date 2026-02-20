@@ -1,3 +1,3 @@
-flet
+flet>=0.11.0
 requests
 telebot
