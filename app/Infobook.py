@@ -88,13 +88,11 @@ def Main(page: ft.Page):
         widgets = BookWidget(page, books, main_page, search_results)
         main_page.controls.clear()
         main_page.controls.extend(widgets.container())
-        page.update()
 
     def analyse(e):
         """ TODO: Anylyse Logic """
-        main_page.clean()
-        main_page.controls.append(piechart())
-        page.update()
+        main_page.controls[:] = [piechart()]
+        main_page.update()
 
 
     def on_logo_click(e):
@@ -145,7 +143,6 @@ def Main(page: ft.Page):
         else:
             page.open(ft.SnackBar(ft.Text("Successful Login!")))
             page.close(login_dlg)
-        page.update()
 
     #__________LOGIN Alert Dialog_________________
     login_dlg = ft.AlertDialog(
