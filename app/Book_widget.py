@@ -91,14 +91,14 @@ class BookWidget:
                                 [
                                     ft.Image(
                                             src_base64=book["cover_b64"],
-                                        fit=ft.ImageFit.CONTAIN,
+                                        fit=ft.ImageFitType.CONTAIN,
                                         width=200,
                                         height=270,
                                         error_content=ft.Image(
                                             "NotFound.jpg",
                                             width=200,
                                             height=270,
-                                            fit=ft.ImageFit.CONTAIN,
+                                            fit=ft.ImageFitType.CONTAIN,
                                         ),
                                     )
                                 ],
