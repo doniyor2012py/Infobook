@@ -122,7 +122,7 @@ def Main(page: ft.Page):
                 main_page.controls.clear()
                 main_page.controls.append(ft.Text("No books found."))
         search_input.value = ""
-        page.update()
+        main_page.update()
 
     search_input = ft.TextField(label="Search books...", width=300)
     show_books()

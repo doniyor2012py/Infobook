@@ -1,5 +1,7 @@
 import json
 import pathlib
+import os
+from functools import lru_cache
 
 def search(books_list: list, query: str) -> list:
     """
@@ -54,13 +56,26 @@ def shorter(x: list, limit: int = 30) -> str:
         letter_count += len(word)
     return " ".join(result)
 
-def load_books():
-    """Загружает JSON файл. Сейчас это - books_data.json для главной странице"""
+import json
+import pathlib
+from functools import lru_cache
+import os
+
+@lru_cache(maxsize=1)
+def load_books_cached(last_modified=None):
+    """Кэширует загрузку JSON файла, сбрасывается при изменении"""
+    BASE_DIR = pathlib.Path(__file__).parent
+    file_path = BASE_DIR / "books_data.json"
     try:
-        BASE_DIR = pathlib.Path(__file__).parent
-        file_path = BASE_DIR / "books_data.json"
         with open(file_path, "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception as e:
-        print(e)
+        print("Error loading books:", e)
         return []
+
+def load_books():
+    """Загрузка с автоматическим сбросом кэша при изменении файла"""
+    BASE_DIR = pathlib.Path(__file__).parent
+    file_path = BASE_DIR / "books_data.json"
+    last_modified = os.path.getmtime(file_path)
+    return load_books_cached(last_modified)
