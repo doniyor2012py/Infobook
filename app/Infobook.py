@@ -15,12 +15,12 @@ print("📂 Full path:", os.path.abspath(__file__))
 
 
 def Main(page: ft.Page):
-    analytics = ft.WebView(
-        src="https://plausible.io/js/pa-Q_jj32-309OTnnqJrvPZ9.js",
-        width=0,
-        height=0,  # невидимо, просто для аналитики
-        expand=False
-    )
+    # analytics = ft.WebView(
+    #     src="https://plausible.io/js/pa-Q_jj32-309OTnnqJrvPZ9.js",
+    #     width=0,
+    #     height=0,  # невидимо, просто для аналитики
+    #     expand=False
+    # )
     page.title = "InfoBook"
     page.scroll = ft.ScrollMode.ALWAYS
     page.theme_mode = "light"
