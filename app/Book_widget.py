@@ -56,7 +56,7 @@ class BookWidget:
                         src_base64=book["cover_b64"],
                         width=200,
                         height=270,
-                        fit=ft.ImageFit.CONTAIN
+                        fit=ft.BoxFit.CONTAIN
                     ),
                     ft.Container(
                         content=ft.Text(to_next_line(book["description"], 140)), 
@@ -91,14 +91,14 @@ class BookWidget:
                                 [
                                     ft.Image(
                                             src_base64=book["cover_b64"],
-                                        fit=ft.ImageFit.CONTAIN,
+                                        fit=ft.BoxFit.CONTAIN,
                                         width=200,
                                         height=270,
                                         error_content=ft.Image(
                                             "NotFound.jpg",
                                             width=200,
                                             height=270,
-                                            fit=ft.ImageFit.CONTAIN,
+                                            fit=ft.BoxFit.CONTAIN,
                                         ),
                                     )
                                 ],

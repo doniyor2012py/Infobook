@@ -6,18 +6,16 @@ from search import parse_books, preload_covers, total_books
 import os
 from bot import support_message
 from analyse import piechart
-from flet import IFrame
+
 
 print("📂 Files in current dir:", os.listdir())
-print("📂 Full path:", os.path.abspath(__file__))
+
 
 
 
 
 
 def Main(page: ft.Page):
-    analytics = IFrame(src="https://infobook.onrender.com/static/plausible.html", width=0, height=0)
-    page.add(analytics)
     page.title = "InfoBook"
     page.scroll = ft.ScrollMode.ALWAYS
     page.theme_mode = "light"
@@ -222,4 +220,4 @@ def Main(page: ft.Page):
     )
     
 
-ft.app(target=Main, view=None)
+ft.run(target=Main, view=None)
