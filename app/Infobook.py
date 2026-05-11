@@ -8,7 +8,7 @@ from bot import support_message
 from analyse import piechart
 
 print("📂 Files in current dir:", os.listdir())
-print("📂 Full path:", os.path.abspath(__file__))
+
 
 
 
@@ -223,4 +223,4 @@ def Main(page: ft.Page):
     )
     
 
-ft.run(main=Main, view=None)
+ft.run(target=Main, view=None)
