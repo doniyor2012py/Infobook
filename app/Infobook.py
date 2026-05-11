@@ -7,7 +7,6 @@ import os
 from bot import support_message
 from analyse import piechart
 
-
 print("📂 Files in current dir:", os.listdir())
 
 
@@ -16,6 +15,12 @@ print("📂 Files in current dir:", os.listdir())
 
 
 def Main(page: ft.Page):
+    # analytics = ft.WebView(
+    #     src="https://plausible.io/js/pa-Q_jj32-309OTnnqJrvPZ9.js",
+    #     width=0,
+    #     height=0,  # невидимо, просто для аналитики
+    #     expand=False
+    # )
     page.title = "InfoBook"
     page.scroll = ft.ScrollMode.ALWAYS
     page.theme_mode = "light"
@@ -83,13 +88,11 @@ def Main(page: ft.Page):
         widgets = BookWidget(page, books, main_page, search_results)
         main_page.controls.clear()
         main_page.controls.extend(widgets.container())
-        page.update()
 
     def analyse(e):
         """ TODO: Anylyse Logic """
-        main_page.clean()
-        main_page.controls.append(piechart())
-        page.update()
+        main_page.controls[:] = [piechart()]
+        main_page.update()
 
 
     def on_logo_click(e):
@@ -119,7 +122,7 @@ def Main(page: ft.Page):
                 main_page.controls.clear()
                 main_page.controls.append(ft.Text("No books found."))
         search_input.value = ""
-        page.update()
+        main_page.update()
 
     search_input = ft.TextField(label="Search books...", width=300)
     show_books()
@@ -140,7 +143,6 @@ def Main(page: ft.Page):
         else:
             page.open(ft.SnackBar(ft.Text("Successful Login!")))
             page.close(login_dlg)
-        page.update()
 
     #__________LOGIN Alert Dialog_________________
     login_dlg = ft.AlertDialog(
@@ -177,6 +179,7 @@ def Main(page: ft.Page):
         width=150
 )
     #________________Adding all in main page__________________________
+    page.add(analytics)
     page.add(
         ft.Column(
             [
